@@ -1,0 +1,10 @@
+players.csv->Contains demographic, collegiate, and draft metadata for the 510 rookie prospects.
+has columns ['nfl_id', 'display_name', 'draft_year', 'nfl_position', 'birth_date',
+       'college_name', 'college_conference', 'draft_round',
+       'draft_pick_within_round', 'draft_overall_pick'],
+
+
+
+combine_results.csv; Contains official anthropometric measurements, standardized physical testing splits, and Next Gen Stats draft grades from the NFL Scouting Combine.
+
+ahsc columns 
