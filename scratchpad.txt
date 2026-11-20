@@ -6,5 +6,73 @@ has columns ['nfl_id', 'display_name', 'draft_year', 'nfl_position', 'birth_date
 
 
 combine_results.csv; Contains official anthropometric measurements, standardized physical testing splits, and Next Gen Stats draft grades from the NFL Scouting Combine.
+ahsc columns 'draft_year', 'nfl_id', 'combine_position', 'combine_height','combine_weight', 'hand_size', 'arm_length', 'wing_span','ten_yd_split', 'forty', 'vertical', 'broad_jump', 'three_cone', 'short_shuttle', 'bench_reps', 'ngs_athleticism_score', 'ngs_college_production_score', 'ngs_final_score'],
 
-ahsc columns 
+
+combine_tracking.csv : Contains 10 Hz high-frequency optical sensor tracking across 6,310 Combine drill attempts, including 40-yard dash sprints and position-specific agility/route drills
+has columns ['draft_year', 'event_id', 'nfl_id', 'entity_type', 'time', 'drill_type', 'drill_name', 'attempt', 'x', 'y', 's', 'a', 'dis', 'dir']
+
+player_career_successes.csv: Contains cumulative career volume statistics, snap counts, and accolades earned by the 510 prospects during their rookie and subsequent seasons.
+
+has columns ['nfl_id', 'career_offensive_snaps', 'career_defensive_snaps',
+       'career_special_teams_snaps', 'career_games_active',
+       'career_games_started', 'ap_all_pro_1st_team', 'ap_all_pro_2nd_team',
+       'pro_bowl_original_ballot'],
+
+
+player_play.csv:Contains granular in-game Next Gen Stats and play-by-play metrics for every snap involving the rookie cohort across the 2023, 2024, and 2025 seasons ($N=316,338$ player-play records).
+
+has columns 'game_id', 'play_id', 'team_abbr', 'nfl_id', 'lined_up_position',
+       'play_description', 'quarter', 'down', 'yards_to_go', 'possession_team',
+       'yardline_side', 'yardline_number', 'game_clock', 'pre_snap_home_score',
+       'pre_snap_visitor_score', 'play_direction',
+       'pre_snap_home_team_win_probability',
+       'pre_snap_visitor_team_win_probability',
+       'home_team_win_probability_added', 'visitor_team_win_probility_added',
+       'expected_points_added', 'expected_points', 'offense_formation',
+       'receiver_alignment', 'pass_result', 'pass_length',
+       'play_nullified_by_penalty', 'penalty_yards',
+       'pre_penalty_yards_gained', 'yards_gained', 'team_coverage_man_zone',
+       'team_coverage_type', 'in_motion_at_ball_snap', 'target', 'rec_yards',
+       'rush_yards', 'yards_after_catch', 'fumble', 'fumble_lost', 'route_ran',
+       'separation_at_pass_forward', 'cushion', 'expected_yards_after_catch',
+       'dropback_duration', 'extended_sack_allowed',
+       'pass_rushers_encountered', 'peak_pressure_probability_allowed',
+       'pressure_allowed', 'sack_allowed', 'time_to_pressure_allowed',
+       'quick_pressure', 'unblocked_pressure', 'blitzing', 'player_get_off',
+       'sack', 'tackle', 'assist', 'caused_forced_fumble', 'recovered_fumble',
+       'tackle_for_loss', 'time_to_pressure', 'time_to_qb_hurry',
+       'coverage_assignment', 'coverage_assignment_at_snap'],
+
+
+games.csv:Contains schedule, season, and team matchup metadata for all 1,002 NFL regular-season and playoff games across 2023, 2024, and 2025.
+
+has columns ['game_id', 'game_key', 'season', 'season_type', 'week',
+       'home_team_abbr', 'visitor_team_abbr'],
+
+Files 7, 8, 9: game_tracking_2023.csv, game_tracking_2024.csv, game_tracking_2025.csv
+Contain 10 Hz high-frequency in-game optical tracking frames for all rookie cohort prospects across each respective NFL season.
+
+Column Name	Data Type	Example	Description
+game_id	int64	2024080952	Game identifier matching games.csv.
+play_id	int64	3379	Play identifier matching player_play.csv.
+nfl_id	int64	57367	Player identifier matching players.csv (tracks all 510 rookie cohort prospects).
+time	str	2024-08-10T01:30:31.800	ISO 8601 timestamp for the in-game optical tracking frame (sampled every 0.10s).
+x	float64	87.09	Player horizontal position along field length in yards (0-120).
+y	float64	22.52	Player vertical position across field width in yards (0-53.33).
+s	float64	0.28	Instantaneous player speed in yards per second (yd/s).
+a	float64	0.11	Instantaneous player acceleration in yards per second squared (yds / sec^2).
+dis	float64	0.03	Distance traveled from the previous tracking frame in yards.
+o	float64	98.51	Player body orientation angle in degrees (0-360).
+dir	float64	126.08	Player motion direction angle in degrees (0-360).
+event	str / null	pass_forward	Game play milestone event tag (e.g., ball_snap, pass_forward, pass_arrived, tackle, touchdown, first_contact, out_of_bounds, or null for regular frames).
+
+
+
+
+
+
+
+
+
+
